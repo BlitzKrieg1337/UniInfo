@@ -1,31 +1,35 @@
 import os
-from pathlib import Path 
+from pathlib import Path
 from docling.document_converter import DocumentConverter
 
 os.environ["TORCHDYNAMO_DISABLE"] = "1"
 
 class DocumentExtractor:
 
-    def extract(self, source:str, file_name:str, folder:str):
-        converter = DocumentConverter()
-        try: 
+    def __init__(self):
+        self.converter = DocumentConverter()
+
+    def extract(self, source: str, file_name: str, folder: str):
+        try:
             source = source.strip(' "\'')
             output_dir = Path(__file__).parent / "data" / folder
             output_dir.mkdir(parents=True, exist_ok=True)
+            output_path = output_dir / f"{file_name}.md"
 
-            result = converter.convert(source).document
+            result = self.converter.convert(source).document
             doc = result.export_to_markdown()
 
-            with open(f"data/{folder}/{file_name}.md", "w", encoding = "utf-8") as f:
+            with open(output_path, "w", encoding="utf-8") as f:
                 f.write(doc)
-            print(f"Saved: data/{folder}/{file_name}.md")
+            print(f"Saved: {output_path}")
         except Exception as e:
-            print(f"Extraction failed: {e}")
+            print(f"Extraction failed for {source}: {e}")
 
-#Add Prgoram URLs with file names(TCD, UCD, DCU)
-obj = DocumentExtractor()
 
-source = input("Please enter source: ")
-file_name = input("Please enter file name: ")
-folder_name = input("Enter folder name: ")
-obj.extract(source, file_name, folder_name)
+if __name__ == "__main__":
+    obj = DocumentExtractor()
+
+    source = input("Please enter source: ")
+    file_name = input("Please enter file name: ")
+    folder_name = input("Enter folder name: ")
+    obj.extract(source, file_name, folder_name)
