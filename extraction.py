@@ -11,7 +11,8 @@ class DocumentExtractor:
             f.write(doc)
         print("Saved URL.")
 
-c = DocumentExtractor()
+#Add Prgoram URLs with file names(TCD, UCD, DCU)
+obj = DocumentExtractor()
 url = input("Please enter URl: ")
 filename = input("Please enter file name: ")
-c.get_url_text(url, filename)
+obj.get_url_text(url, filename)
