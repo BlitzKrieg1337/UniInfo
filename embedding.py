@@ -1,15 +1,86 @@
-import os
-from dotenv import load_dotenv
+import shutil
+from pathlib import Path
+
 from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_core.documents import Document
+from langchain_chroma import Chroma
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 
-class Embedding:
+class EmbeddingStore:
 
     def __init__(self):
+        self.embedding_model = HuggingFaceEmbeddings(
+            model_name="all-MiniLM-L6-v2"
+        )
+        print("Embedding model loaded.")
 
-        self.embedding_model = HuggingFaceEmbeddings(model_name = "all-MiniLM-L6-v2")
-        print("Model loaded.")
+    def load_documents(self, folder="data/md"):
+        documents = []
+        for path in Path(folder).rglob("*.md"):
+
+            try:
+                documents.append(
+                    Document(
+                        page_content=path.read_text(encoding="utf-8"),
+                        metadata={"source": str(path)}
+                    )
+                )
+
+            except Exception as e:
+                print(f"Error loading {path}: {e}")
+
+        print(f"Loaded {len(documents)} documents.")
+
+        return documents
+
+    def split_documents(self, documents):
+        try:
+            splitter = RecursiveCharacterTextSplitter(
+                chunk_size=1000,
+                chunk_overlap=100
+            )
+            chunks = splitter.split_documents(documents)
+            print(f"Split {len(documents)} documents into {len(chunks)} chunks.")
+            return chunks
+        
+        except Exception as e:
+            print(f"Document splitting failed: {e}")
+            return []
+
+    def store_documents(self, documents):
+        persist_directory = "chroma_db"
+
+        try:
+            if Path(persist_directory).exists():
+                shutil.rmtree(persist_directory)
+
+            Chroma.from_documents(
+                documents=documents,
+                embedding=self.embedding_model,
+                persist_directory=persist_directory
+            )
+            print("Documents stored in Chroma.")
+
+        except Exception as e:
+            print(f"Chroma storage failed: {e}")
+
+    def process_documents(self):
+        documents = self.load_documents()
+
+        if not documents:
+            print("No documents to process.")
+            return None
+
+        chunks = self.split_documents(documents)
+        
+        if not chunks:
+            print("No chunks to process.")
+            return None
+
+        self.store_documents(chunks)
 
 
-obj = Embedding()
-obj.embedded()
+if __name__ == "__main__":
+    obj = EmbeddingStore()
+    obj.process_documents()
