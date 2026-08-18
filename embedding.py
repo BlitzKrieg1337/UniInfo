@@ -18,12 +18,14 @@ class EmbeddingStore:
     def load_documents(self, folder="data"):
         documents = []
         for path in Path(folder).rglob("*.md"):
-
             try:
                 documents.append(
                     Document(
                         page_content=path.read_text(encoding="utf-8"),
-                        metadata={"source": str(path)}
+                        metadata={
+                            "source": str(path),
+                            "college": path.parent.name
+                        }
                     )
                 )
 
