@@ -1,8 +1,9 @@
+import os
+from dotenv import load_dotenv
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from langchain_core.load import dumps, loads
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 class Query:
@@ -23,9 +24,10 @@ class Query:
                 }
             }
         )
-        
+
         # 2. Initialize LLM 
-        self.llm = ChatGoogleGenerativeAI(model="gemini-3.5-flash")
+        load_dotenv()
+        self.llm = ChatGoogleGenerativeAI(model="gemini-3.5-flash", api_key = os.getenv("api_key"), temperature=0)
         
         # 3. Setup the retrieval chain immediately so it's ready for queries
         self._setup_retrieval_chain()
@@ -51,10 +53,18 @@ class Query:
 
         self.retrieval_chain = generate_queries | self.retriever.map() | self.get_unique_union
 
-    def get_unique_union(self, documents: list[list]):
-        flattened_doc = [dumps(doc) for sublist in documents for doc in sublist]
-        unique_doc = list(set(flattened_doc))
-        return [loads(doc) for doc in unique_doc]
+    def get_unique_union(self, documents):
+        unique_docs = {}
+
+        for sublist in documents:
+            for doc in sublist:
+                key = (
+                    doc.metadata.get("source"),
+                    doc.page_content
+                )
+                unique_docs[key] = doc
+
+        return list(unique_docs.values())
 
     def format_docs(self, docs):
         return "\n\n".join(doc.page_content for doc in docs)
@@ -99,9 +109,13 @@ class Query:
             print(answer)
 
             print("\nSources:")
+            sources = set()
+
             for doc in documents:
-                # Safely get the source, default to 'Unknown' if not present
-                print("-", doc.metadata.get("source", "Unknown"))
+                sources.add(doc.metadata.get("source", "Unknown"))
+
+            for source in sources:
+                print("-", source)
 
 
 if __name__ == "__main__":
