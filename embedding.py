@@ -15,7 +15,7 @@ class EmbeddingStore:
         )
         print("Embedding model loaded.")
 
-    def load_documents(self, folder="data/md"):
+    def load_documents(self, folder="data"):
         documents = []
         for path in Path(folder).rglob("*.md"):
 
