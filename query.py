@@ -6,6 +6,8 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_google_genai import ChatGoogleGenerativeAI
+from embedding import EmbeddingStore
+from langchain_community.retrievers import BM25Retriever
 
 
 class Query:
@@ -32,16 +34,32 @@ class Query:
         )
         print("Chroma database initialized.")
 
-        # Base vector retriever
+        self.college_name = "Dublin City University - DCU"
+
+        # Vector retriever
         self.retriever = self.db.as_retriever(
             search_type="similarity",
             search_kwargs={
                 "k": 5,
                 "filter": {
-                    "college": "Dublin City University - DCU"
+                    "college": self.college_name
                 }
             }
         )
+
+        # Loading same chunks used in embedding for BM25
+        self.embedding_store = EmbeddingStore()
+        self.chunks = self.embedding_store.get_chunks()
+
+        # BM25 retriever
+        self.bm25_retriever = BM25Retriever.from_documents(
+            [
+                doc for doc in self.chunks
+                if doc.metadata.get("college")
+                == self.college_name
+            ]
+        )
+        self.bm25_retriever.k = 5
 
         # LLM
         self.llm = ChatGoogleGenerativeAI(
@@ -50,12 +68,42 @@ class Query:
             temperature=0
         )
 
-    # ---------- RETRIEVAL STRATEGY 1 ----------
+    # ---------- VECTOR SEARCH ----------
 
     def similarity_search(self, user_query):
         return self.retriever.invoke(user_query)
 
-    # ---------- RETRIEVAL STRATEGY 2 ----------
+    # ---------- BM25 SEARCH ----------
+
+    def bm25_search(self, user_query):
+        return self.bm25_retriever.invoke(user_query)
+
+    def hybrid_search(self, user_query, k = 5):
+        vector_results = self.similarity_search(user_query)
+        bm25_results = self.bm25_search(user_query)
+
+        scores = {}
+        documents = {}
+
+        for rank, doc in enumerate(vector_results, start = 1):
+            key = (doc.metadata.get("source"), doc.page_content)
+            scores[key] = scores.get(key, 0) + 1 / (60 + rank)
+            documents[key] = doc
+
+        for rank, doc in enumerate(bm25_results, start = 1):
+            key = (doc.metadata.get("source"), doc.page_content)
+            scores[key] = scores.get(key, 0) + 1 / (60 + rank)
+            documents[key] = doc
+
+        ranked_keys = sorted(
+            scores,
+            key = scores.get,
+            reverse=True
+        )
+
+        return [documents[key] for key in ranked_keys[:k]]
+
+    # ---------- MULTI-QUERY SEARCH ----------
 
     def multi_query_search(self, user_query):
 
@@ -87,7 +135,7 @@ class Query:
             "question": user_query
         })
 
-    # ---------- HELPER ----------
+    # ---------- HELPERS ----------
 
     def get_unique_union(self, documents):
         unique_docs = {}
@@ -104,8 +152,7 @@ class Query:
 
     def format_docs(self, docs):
         return "\n\n".join(
-            doc.page_content
-            for doc in docs
+            doc.page_content for doc in docs
         )
 
     # ---------- ANSWERING ----------
@@ -115,8 +162,14 @@ class Query:
         if strategy == "similarity":
             retrieved_docs = self.similarity_search(user_query)
 
+        elif strategy == "bm25":
+            retrieved_docs = self.bm25_search(user_query)
+
         elif strategy == "multi_query":
             retrieved_docs = self.multi_query_search(user_query)
+
+        elif strategy == "hybrid_search":
+            retrieved_docs = self.hybrid_search(user_query)
 
         else:
             raise ValueError(
@@ -162,8 +215,7 @@ class Query:
             if user_query.lower() == "exit":
                 break
 
-            # Choose retrieval strategy here
-            strategy = "similarity"
+            strategy = "hybrid_search"
 
             answer, documents = self.answer_query(
                 user_query,

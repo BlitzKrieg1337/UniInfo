@@ -50,6 +50,21 @@ class EmbeddingStore:
             print(f"Document splitting failed: {e}")
             return []
 
+    def get_chunks(self):
+        documents = self.load_documents()
+
+        if not documents:
+            print("No documents to process.")
+            return []
+
+        chunks = self.split_documents(documents)
+
+        if not chunks:
+            print("No chunks to process.")
+            return []
+
+        return chunks
+
     def store_documents(self, documents):
         persist_directory = "chroma_db"
 
