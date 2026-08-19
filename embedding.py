@@ -83,16 +83,9 @@ class EmbeddingStore:
             print(f"Chroma storage failed: {e}")
 
     def process_documents(self):
-        documents = self.load_documents()
+        chunks = self.get_chunks()
 
-        if not documents:
-            print("No documents to process.")
-            return None
-
-        chunks = self.split_documents(documents)
-        
         if not chunks:
-            print("No chunks to process.")
             return None
 
         self.store_documents(chunks)

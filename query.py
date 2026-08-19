@@ -6,8 +6,8 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_google_genai import ChatGoogleGenerativeAI
-from embedding import EmbeddingStore
 from langchain_community.retrievers import BM25Retriever
+from langchain_core.documents import Document
 
 
 class Query:
@@ -16,10 +16,11 @@ class Query:
         load_dotenv()
 
         # LangSmith
-        os.environ["LANGCHAIN_TRACING_V2"] = "true"
-        os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
-        os.environ["LANGCHAIN_API_KEY"] = os.getenv("langsmith_apikey")
-        os.environ["LANGSMITH_PROJECT"] = "UniFit"
+        langsmith_key = os.getenv("langsmith_apikey")
+        if langsmith_key:
+            os.environ["LANGCHAIN_TRACING_V2"] = "true"
+            os.environ["LANGCHAIN_API_KEY"] = langsmith_key
+            os.environ["LANGSMITH_PROJECT"] = "UniFit"
 
         # Embeddings
         self.embedding_model = HuggingFaceEmbeddings(
@@ -48,8 +49,7 @@ class Query:
         )
 
         # Loading same chunks used in embedding for BM25
-        self.embedding_store = EmbeddingStore()
-        self.chunks = self.embedding_store.get_chunks()
+        self.chunks = self._load_chunks_from_chroma()
 
         # BM25 retriever
         self.bm25_retriever = BM25Retriever.from_documents(
@@ -67,6 +67,14 @@ class Query:
             api_key=os.getenv("api_key"),
             temperature=0
         )
+
+    def _load_chunks_from_chroma(self):
+        data = self.db.get(include=["documents", "metadatas"])
+        return [
+            Document(page_content=content, metadata=meta)
+            for content, meta in zip(data["documents"], data["metadatas"])
+        ]
+
 
     # ---------- VECTOR SEARCH ----------
 

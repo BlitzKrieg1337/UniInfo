@@ -2,12 +2,6 @@
 
 [UCD Home &gt;](https://www.ucd.ie/)
 
-Search UCD.ie
-
-Search UCD.ie
-
-Search
-
 ### About UCD
 
 - [Overview](https://www.ucd.ie/about-ucd/)
@@ -17,47 +11,6 @@ Search
 - [Equality, Diversity &amp; Inclusion](https://www.ucd.ie/equality/)
 - [Campus Development](https://www.ucd.ie/campusdevelopment/)
 
-### Students
-
-- [Course Catalogue](https://www.ucd.ie/courses/catalogue)
-- [Study at UCD](https://www.ucd.ie/studyatucd/)
-- [Current Students](https://www.ucd.ie/students/)
-- [Campus Accommodation](https://www.ucd.ie/residences/)
-- [International Student Experience](https://www.ucd.ie/global/studentexperience/)
-- [Access &amp; Lifelong Learning](https://www.ucd.ie/all/)
-- [Careers Network](https://www.ucd.ie/careers/students/)
-- [Sports Clubs](https://www.ucd.ie/sport/)
-- [Student Societies](https://societies.ucd.ie/)
-
-### Research &amp; Innovation
-
-- [Research](https://www.ucd.ie/research/)
-- [Innovation at NovaUCD](https://www.ucd.ie/innovation/)
-- [Graduate Studies](https://www.ucd.ie/graduatestudies/)
-- [Support for Researchers](https://www.ucd.ie/research/portal/)
-- [Find a UCD Researcher](https://people.ucd.ie/)
-
-### Colleges
-
-- [UCD College of Arts and Humanities](https://www.ucd.ie/artshumanities/)
-- [UCD College of Business](https://www.ucd.ie/collegesandschools/business/)
-- [UCD College of Engineering and Architecture](https://www.ucd.ie/eacollege/)
-- [UCD College of Health and Agricultural Sciences](https://www.ucd.ie/chas/)
-- [UCD College of Science](https://www.ucd.ie/science/)
-- [UCD College of Social Sciences and Law](https://www.ucd.ie/socscilaw/)
-- [All Colleges and Schools](https://www.ucd.ie/collegesandschools/)
-
-### Engage
-
-- [News &amp; Opinion](https://www.ucd.ie/newsandopinion/)
-- [Events](https://www.ucd.ie/events/)
-- [Alumni](https://alumni.ucd.ie/)
-- [Work at UCD](https://www.ucd.ie/workatucd/)
-- [UCD in the Community](https://www.ucd.ie/ucdinthecommunity/)
-- [Global Partnerships](https://www.ucd.ie/global/globalpartnerships/)
-- [Employers](https://www.ucd.ie/careers/employers/)
-- [UCD Foundation](https://www.ucdfoundation.ie/)
-- [University Relations](https://www.ucd.ie/universityrelations/)
 
 ### Key Services
 
