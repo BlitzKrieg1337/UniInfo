@@ -9,10 +9,10 @@ class DocumentExtractor:
     def __init__(self):
         self.converter = DocumentConverter()
 
-    def extract(self, source: str, file_name: str):
+    def extract(self, source: str, file_name: str, folder: str):
         try:
             source = source.strip(' "\'')
-            output_dir = Path(__file__).parent / "data" / "Extracted"
+            output_dir = Path(__file__).parent / "data" / folder
             output_dir.mkdir(parents=True, exist_ok=True)
             output_path = output_dir / f"{file_name}.md"
 
@@ -28,7 +28,7 @@ class DocumentExtractor:
 
 if __name__ == "__main__":
     obj = DocumentExtractor()
-
     source = input("Please enter source: ")
     file_name = input("Please enter file name: ")
-    obj.extract(source, file_name)
+    folder_name = input("Enter folder name: ")
+    obj.extract(source, file_name, folder_name)
