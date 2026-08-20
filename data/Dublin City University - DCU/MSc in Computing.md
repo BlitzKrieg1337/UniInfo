@@ -410,119 +410,52 @@ We have a brand [new state of the art four floor library on our St. Patrick's Ca
 
 DCU does have on-campus accommodation for undergraduate and postgraduate students, and you can find out more and apply [via the Accommodation Office webpage](https://www.dcuaccommodation.ie/accommodation) .
 
-## Have You Considered?
+# DCU English Language Requirements for Non-Native Speakers of English
 
-MEng in Electronic and Computer Engineering
+Applicants must provide evidence of competence in the English language. The minimum standards for entry to DCU are outlined below.
 
-<!-- image -->
+*Please note these webpages are currently being updated and will be finalised shortly. If you require any clarification on english language requirements, please contact the admissions team.
 
-DC883 September &amp; January Intake
 
-[MEng in Electronic and Computer Engineering](\courses\postgraduate\school-electronic-engineering\meng-electronic-and-computer-engineering)
+[Engineering and Computing](#collapse-accordion-235981-1)
 
-CAO Code
+In the case of all applications, evidence MUST be provided of competence in the English Language. The list below indicates the minimum standards in the English language, which should be met for entry to the postgraduate taught programmes in the Faculty of Engineering and Computing.
 
-DC883 September &amp; January Intake
+| **EXAMINATION**                                                       | **MINIMUM ENTRY REQUIREMENTS**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+|-----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| International English Language Testing System (IELTS) Academic        | Composite score of 6.5 or above, with no less than 6.0 in any one component.  *Scores must be achieved in one sitting.                                                                                                                                                                                                                                                                                                                                                                                                           |
+| TOEFL                                                                 | 237 (computer-based) 580 (paper-based test)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| TOEFL iBT                                                             | Total Score of 92  Or  Minimum score of 4.5, with no less than 4.5 in each section (Depending on Scoring system used at time the time test was taken).  TOEFL Home Edition is not accepted.                                                                                                                                                                                                                                                                                                                                      |
+| Cambridge Certificate                                                 | English language examinations administered by the University of Cambridge: 180 on Cambridge English scale, with no less than 169 in each skill and evidence of use of english presenting one of the acceptable examinations below.  (Overall score of 180 will change to 176+ for entry 2027)  Acceptable Examinations:  Proficiency Certificate, Grade C (i.e. CEFR Level C1 or C2). Advanced Certificate, Grade C (i.e. CEFR Level C1 or C2) First Certificate, Grade A (i.e. CEFR Level C1) Linguaskill (CEFR Level C1 or C2) |
+| English Test for Academic and Professional Purposes (ETAPP)           | Minimum grade C1 or better (CEFR Level C1 or C2).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Pearson Test of English (PTE Academic)                                | 63 with a minimum of 59 in all components.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Duolingo                                                              | Duolingo will be accepted with a minimum overall score of 120 and a score of at least 110 in each of the Individual Subscores - Speaking, Writing, Reading and Listening. Please ensure the verification link is provided when submitting this evidence and you share your results with DCU.                                                                                                                                                                                                                                     |
+| **For Entry 2027**                                                    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| International English Language Competency Assessment (IELCA) Academic | Minimum score of 35 with a minimum of 33 in each band.                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Language Cert (English for Speakers of other Languages - ESOL)        | B2 Communicator High Pass with no less than 33 in each skill taken with no more than 3 months between components.                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Language Cert Academic                                                | 70 overall with 65 in each skill                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Oxford English Test                                                   | Minimum score of 140 overall with a minimum score of 125 in each skill with no more than 3 months between sittings.                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Trinity Integrated Skills in English (ISE)                            | Trinity ISE III with at least merit in each skill category.                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
-Type
+**Additional Notes:**
 
-postgraduate
+1. English language certificates must be awarded within **two years** prior to the start date of your DCU programme.
 
-NFQ
+2. English Language requirements for individual programmes may be higher than published here. Please refer to the programme page for further details.
 
-9
+3. All scores on your English language proficiency test must be achieved in one sitting.
 
-Delivery
+[Alternative Requirements/Evidence of Competency](#collapse-accordion-714651-1)
 
-full time
+**Postgraduate Taught Programmes Note:** In exceptional circumstances, results in examinations other than those published may be accepted as proof of competence in English language for postgraduate taught programmes.
 
-Duration
+This may include:
 
-1 Year Full-Time, 2 Years Part-Time
+- Non-native speakers of English who in the past two years have completed their school education through the medium of English in a country where English is the official language. For example, applicants who have successfully achieved a 06/H7 in Leaving Certificate English, a Grade D in A Level English or an examination deemed as an equivalent by DCU.
+- Applicants who have completed their undergraduate degree in the past two years, in a country where English is the official language.
+- Applicants who have recently lived in a country where English is the official language for at least four years and been employed in a professional role that required a high level of written and verbal communication. Applicants will be required to provide specific documentation to evidence this e.g. residency documentation, employer statement.
 
-[More info](\courses\postgraduate\school-electronic-engineering\meng-electronic-and-computer-engineering)
-
-MSc in Electronic &amp; Computer Technology
-
-<!-- image -->
-
-DC877 - January &amp; September Intake
-
-[MSc in Electronic &amp; Computer Technology](\courses\postgraduate\school-electronic-engineering\msc-electronic-computer-technology)
-
-CAO Code
-
-DC877 - January &amp; September Intake
-
-Type
-
-postgraduate
-
-Delivery
-
-full time
-
-Duration
-
-FT-1 Year
-
-[More info](\courses\postgraduate\school-electronic-engineering\msc-electronic-computer-technology)
-
-## Find other courses
-
-Undergraduate or Postgraduate
-
-- Any -
-
-Undergraduate
-
-Postgraduate
-
-Course
-
-field\_key\_words\_value
-
-Find my course &gt;
 
 ###### Last updated:
 
 4 days 19 hours ago
-
-- [Student Apps](\studentapps)
-- [Student Email](http://login.mail.dcu.ie/)
-- [Staff Apps](\dts\staff-my-page)
-- [Staff Email](http://apps.dcu.ie/)
-
-- [Contact Us](\contact-us)
-- [Loop](https://loop.dcu.ie/)
-- [Disclaimer](\disclaimer)
-
-- [Privacy and Cookies](\dts\dcu-privacy-and-cookies-statement)
-- [Accessibility Statement](\digitalcomms\accessibility-statement)
-- [AI in DCU](\ocoo\dcu-position-statement-use-artificial-intelligence-tools)
-
-Facebook Icon
-
-<!-- image -->
-
-YouTube Icon
-
-<!-- image -->
-
-Instagram Icon
-
-<!-- image -->
-
-Tik Tok Icon
-
-<!-- image -->
-
-LinkedIn Icon
-
-<!-- image -->
-
-Bluesky Icon
-
-<!-- image -->
-
-Dublin City University is a registered charity with the Charities Regulatory Authority, RCN 20013653.
