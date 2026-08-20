@@ -2,32 +2,6 @@
 
 [UCD Home &gt;](https://www.ucd.ie/)
 
-### About UCD
-
-- [Overview](https://www.ucd.ie/about-ucd/)
-- [University Strategy](https://strategy.ucd.ie/)
-- [University Governance](https://www.ucd.ie/governance/)
-- [President's Office](https://www.ucd.ie/president/)
-- [Equality, Diversity &amp; Inclusion](https://www.ucd.ie/equality/)
-- [Campus Development](https://www.ucd.ie/campusdevelopment/)
-
-
-### Key Services
-
-- [A to Z](https://www.ucd.ie/a-z/)
-- [Library](https://www.ucd.ie/library/)
-- [Staff Directory](https://www.ucd.ie/directory)
-- [Sport &amp; Fitness](https://www.ucd.ie/sportandfitness/)
-- [IT Services](https://www.ucd.ie/itservices/)
-- [HR](https://www.ucd.ie/hr/)
-- [Commuting](https://ucdestates.ie/commuting/)
-- [UCD Map](https://ucdestates.ie/information/ucd-maps/)
-
-- [Facebook](https://www.facebook.com/universitycollegedublin)
-- [Instagram](https://instagram.com/universitycollegedublin)
-- [X (Twitter)](https://twitter.com/ucddublin)
-- [YouTube](https://www.youtube.com/user/myucd)
-- [LinkedIn](https://linkedin.com/school/university-college-dublin/)
 
 # Advanced Artificial Intelligence
 
