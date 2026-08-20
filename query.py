@@ -12,7 +12,7 @@ from langchain_core.documents import Document
 
 class Query:
 
-    def __init__(self):
+    def __init__(self, college_name, program_name):
         load_dotenv()
 
         # LangSmith
@@ -35,15 +35,19 @@ class Query:
         )
         print("Chroma database initialized.")
 
-        self.college_name = "Dublin City University - DCU"
+        self.college_name = college_name
+        self.program_name = program_name
 
         # Vector retriever
         self.retriever = self.db.as_retriever(
             search_type="similarity",
             search_kwargs={
-                "k": 5,
+                "k": 8,
                 "filter": {
-                    "college": self.college_name
+                    "$and": [
+                        {"college": self.college_name},
+                        {"program": self.program_name}
+                    ]
                 }
             }
         )
@@ -55,11 +59,10 @@ class Query:
         self.bm25_retriever = BM25Retriever.from_documents(
             [
                 doc for doc in self.chunks
-                if doc.metadata.get("college")
-                == self.college_name
+                if doc.metadata.get("college") == self.college_name and doc.metadata.get("program") == self.program_name
             ]
         )
-        self.bm25_retriever.k = 5
+        self.bm25_retriever.k = 8
 
         # LLM
         self.llm = ChatGoogleGenerativeAI(
@@ -165,18 +168,18 @@ class Query:
 
     # ---------- ANSWERING ----------
 
-    def answer_query(self, user_query, strategy="similarity"):
+    def answer_query(self, user_query, strategy):
 
-        if strategy == "similarity":
+        if strategy == "Vector Search":
             retrieved_docs = self.similarity_search(user_query)
 
-        elif strategy == "bm25":
+        elif strategy == "BM25 Search":
             retrieved_docs = self.bm25_search(user_query)
 
-        elif strategy == "multi_query":
+        elif strategy == "Multi-query Search":
             retrieved_docs = self.multi_query_search(user_query)
 
-        elif strategy == "hybrid_search":
+        elif strategy == "Hybrid Search":
             retrieved_docs = self.hybrid_search(user_query)
 
         else:

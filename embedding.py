@@ -24,7 +24,8 @@ class EmbeddingStore:
                         page_content=path.read_text(encoding="utf-8"),
                         metadata={
                             "source": str(path),
-                            "college": path.parent.name
+                            "college": path.parent.name,
+                            "program": path.stem
                         }
                     )
                 )
