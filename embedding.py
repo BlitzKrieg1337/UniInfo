@@ -37,20 +37,6 @@ class EmbeddingStore:
 
         return documents
 
-    # def split_documents(self, documents):
-    #     try:
-    #         splitter = RecursiveCharacterTextSplitter(
-    #             chunk_size=1000,
-    #             chunk_overlap=100
-    #         )
-    #         chunks = splitter.split_documents(documents)
-    #         print(f"Split {len(documents)} documents into {len(chunks)} chunks.")
-    #         return chunks
-        
-    #     except Exception as e:
-    #         print(f"Document splitting failed: {e}")
-    #         return []
-
 
     def split_documents(self, documents):
         try:

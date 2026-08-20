@@ -9,7 +9,7 @@ from query import Query
 # =========================
 
 st.set_page_config(
-    page_title="UniFit",
+    page_title="UniInfo",
     page_icon="🎓",
     layout="wide"
 )
@@ -89,7 +89,7 @@ st.markdown(
         transform: translateY(-50px);
         margin-bottom: 0;
     ">
-        🎓 UniFit
+        🎓 UniInfo
     </h1>
     """,
     unsafe_allow_html=True

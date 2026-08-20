@@ -1,17 +1,3 @@
-## [Courses](\courses)
-
-[menu Menu](#menu)
-
-- [Home](\courses)
-- [Undergraduate](\courses\undergraduate)
-- [Postgraduate](\courses\postgraduate)
-- [Micro-credentials](\courses\microcredentials)
-- [Fees](\courses\fees)
-- [CPD](\courses\hci-cpd)
-- [Short Courses](\courses\short-courses)
-
-
-View the contact page for more contact and location information [Email academic.registry@tcd.ie](mailto:academic.registry@tcd.ie)
 
 # Computer Science - Data Science (M.Sc./P.Grad.Dip)
 

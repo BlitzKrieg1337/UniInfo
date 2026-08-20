@@ -170,16 +170,16 @@ class Query:
 
     def answer_query(self, user_query, strategy):
 
-        if strategy == "Vector Search":
+        if strategy == "similarity":
             retrieved_docs = self.similarity_search(user_query)
 
-        elif strategy == "BM25 Search":
+        elif strategy == "bm25":
             retrieved_docs = self.bm25_search(user_query)
 
-        elif strategy == "Multi-query Search":
+        elif strategy == "multi_query":
             retrieved_docs = self.multi_query_search(user_query)
 
-        elif strategy == "Hybrid Search":
+        elif strategy == "hybrid_search":
             retrieved_docs = self.hybrid_search(user_query)
 
         else:
@@ -193,6 +193,8 @@ class Query:
             """You are a source-grounded university information assistant.
 
         Answer the user's question using ONLY the provided context.
+
+        If the user states their own qualifications or scores, compare them explicitly against any requirement stated in the context — say clearly whether they meet, exceed, or fall short. If a requirement isn't a hard number (like a degree classification) or isn't stated in the context, say so honestly instead of guessing. Never state whether the user will be admitted — only whether they meet what is explicitly written.
 
         Rules:
         1. Use information that is explicitly stated or clearly supported by the context.
