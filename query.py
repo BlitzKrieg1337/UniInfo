@@ -89,7 +89,7 @@ class Query:
     def bm25_search(self, user_query):
         return self.bm25_retriever.invoke(user_query)
 
-    def hybrid_search(self, user_query, k = 5):
+    def hybrid_search(self, user_query, k = 15):
         vector_results = self.similarity_search(user_query)
         bm25_results = self.bm25_search(user_query)
 
