@@ -4,7 +4,7 @@ from pathlib import Path
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_core.documents import Document
 from langchain_chroma import Chroma
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_text_splitters import MarkdownHeaderTextSplitter, RecursiveCharacterTextSplitter
 
 
 class EmbeddingStore:
@@ -37,19 +37,65 @@ class EmbeddingStore:
 
         return documents
 
+    # def split_documents(self, documents):
+    #     try:
+    #         splitter = RecursiveCharacterTextSplitter(
+    #             chunk_size=1000,
+    #             chunk_overlap=100
+    #         )
+    #         chunks = splitter.split_documents(documents)
+    #         print(f"Split {len(documents)} documents into {len(chunks)} chunks.")
+    #         return chunks
+        
+    #     except Exception as e:
+    #         print(f"Document splitting failed: {e}")
+    #         return []
+
+
     def split_documents(self, documents):
         try:
-            splitter = RecursiveCharacterTextSplitter(
-                chunk_size=1000,
-                chunk_overlap=100
+            # 1. Define headers to capture into metadata
+            headers_to_split_on = [
+                ("#", "Header_1"),
+                ("##", "Header_2"),
+                ("###", "Header_3"),
+            ]
+            
+            markdown_splitter = MarkdownHeaderTextSplitter(
+                headers_to_split_on=headers_to_split_on,
+                strip_headers=False  # Keeps headers in text body for embedding context
             )
-            chunks = splitter.split_documents(documents)
-            print(f"Split {len(documents)} documents into {len(chunks)} chunks.")
-            return chunks
-        
+            
+            # 2. Secondary splitter for oversized sections
+            recursive_splitter = RecursiveCharacterTextSplitter(
+                chunk_size=600,
+                chunk_overlap=60
+            )
+            
+            final_chunks = []
+            
+            for doc in documents:
+                # Stage 1: Split by Markdown Headers (requires string input)
+                header_splits = markdown_splitter.split_text(doc.page_content)
+                
+                for split in header_splits:
+                    # Merge original document metadata (file path, uni) with header metadata
+                    combined_metadata = {**doc.metadata, **split.metadata}
+                    
+                    # Stage 2: Sub-split long header sections if they exceed token limits
+                    sub_chunks = recursive_splitter.create_documents(
+                        texts=[split.page_content],
+                        metadatas=[combined_metadata]
+                    )
+                    final_chunks.extend(sub_chunks)
+                    
+            print(f"Split {len(documents)} documents into {len(final_chunks)} chunks.")
+            return final_chunks
+            
         except Exception as e:
             print(f"Document splitting failed: {e}")
             return []
+
 
     def get_chunks(self):
         documents = self.load_documents()
