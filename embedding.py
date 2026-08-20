@@ -12,7 +12,6 @@ class EmbeddingStore:
     def __init__(self):
         self.embedding_model = HuggingFaceEmbeddings(
             model_name="all-MiniLM-L6-v2",
-            show_progress_bar=True
         )
         print("Embedding model loaded.")
 

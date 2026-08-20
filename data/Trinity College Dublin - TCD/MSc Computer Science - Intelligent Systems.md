@@ -144,9 +144,8 @@ Applications missing an English certificate may be rejected or experience delays
 
 ## Course Fees
 
-| 2026/27         | School of Computer Science & Statistics                 | Master in Science in Computer Science                                                                                      | PMCS-COMP-3F                | PFR_000003         | Full-Time                         | 2                  | €8,470.00                 | €16,960.00                    |
-| 2026/27         | School of Computer Science & Statistics                 | Master in Science in School of Computer Science and Statistics, Statistics                                                 | PMCS-STAT-2P                | PFR_000004         | Part-Time                         | 3                  | €5,920.00                 | €11,870.00                    |
-| 2026/27         | School of Computer Science & Statistics                 | Master in Science in School of Computer Science and Statistics, Statistics                                                 | PMCS-STAT-3F                | PFR_000003         | Full-Time                         | 2                  | €8,470.00                 | €16,960.00                    |
+Academic Year	|School	 | Course Name	|Course Code	|Fee Profile Code	|Mode	|Duration (Years)	|EU Student Fee - Year 1	|Non-EU Student Fee - Year 1
+| 2026/27         | School of Computer Science & Statistics                 | Master in Science in Computer Science                                                                                      | PTCS-MCSC-1F                | PTCS-MCSC-1F         | Full-Time                         | 1                  | 	€8,840.00                 | €27,790.00                    |
 
 For a full list of postgraduate fees, [click here](https://www.tcd.ie/courses/postgraduate/fees/) .
 
