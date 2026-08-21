@@ -2,6 +2,7 @@ import os
 
 from dotenv import load_dotenv
 from langchain_chroma import Chroma
+from langchain_google_genai.chat_models import ChatGoogleGenerativeAIError
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -217,10 +218,19 @@ class Query:
 
         answer_chain = prompt | self.llm | StrOutputParser()
 
-        answer = answer_chain.invoke({
-            "context": context,
-            "question": user_query
-        })
+        try:
+            answer = answer_chain.invoke({
+                "context": context,
+                "question": user_query
+            })
+
+        except ChatGoogleGenerativeAIError as e:
+            if "RESOURCE_EXHAUSTED" in str(e):
+                return (
+                    "Gemini API quota has been exhausted. Please try again later.",
+                    retrieved_docs
+                )
+            raise
 
         return answer, retrieved_docs
 
