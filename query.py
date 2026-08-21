@@ -43,7 +43,7 @@ class Query:
         self.retriever = self.db.as_retriever(
             search_type="mmr",
             search_kwargs={
-                "k": 8,
+                "k": 10,
                 "filter": {
                     "$and": [
                         {"college": self.college_name},
@@ -57,13 +57,8 @@ class Query:
         self.chunks = self._load_chunks_from_chroma()
 
         # BM25 retriever
-        self.bm25_retriever = BM25Retriever.from_documents(
-            [
-                doc for doc in self.chunks
-                if doc.metadata.get("college") == self.college_name and doc.metadata.get("program") == self.program_name
-            ]
-        )
-        self.bm25_retriever.k = 8
+        self.bm25_retriever = BM25Retriever.from_documents(self.chunks)
+        self.bm25_retriever.k = 10
 
         # LLM
         self.llm = ChatGoogleGenerativeAI(
@@ -73,12 +68,17 @@ class Query:
         )
 
     def _load_chunks_from_chroma(self):
-        data = self.db.get(include=["documents", "metadatas"])
+        data = self.db.get(
+            where={"$and": [
+                {"college": self.college_name},
+                {"program": self.program_name}
+            ]},
+            include=["documents", "metadatas"]
+        )
         return [
             Document(page_content=content, metadata=meta)
             for content, meta in zip(data["documents"], data["metadatas"])
         ]
-
 
     # ---------- VECTOR SEARCH ----------
 
@@ -117,7 +117,7 @@ class Query:
 
     # ---------- MULTI-QUERY SEARCH ----------
 
-    def multi_query_search(self, user_query):
+    def multi_query_search(self, user_query, k = 15):
 
         query_rewriting_prompt = ChatPromptTemplate.from_template(
             """Generate 3 alternative versions of the question for retrieval.
@@ -145,7 +145,7 @@ class Query:
 
         return retrieval_chain.invoke({
             "question": user_query
-        })
+        })[:k]
 
     # ---------- HELPERS ----------
 
@@ -225,7 +225,7 @@ class Query:
             })
 
         except ChatGoogleGenerativeAIError as e:
-            if "RESOURCE_EXHAUSTED" in str(e):
+            if "429" in str(e) or "RESOURCE_EXHAUSTED" in str(e):
                 return (
                     "Gemini API quota has been exhausted. Please try again later.",
                     retrieved_docs
@@ -265,8 +265,3 @@ class Query:
 
             for source in sources:
                 print("-", source)
-
-
-if __name__ == "__main__":
-    obj = Query()
-    obj.query()

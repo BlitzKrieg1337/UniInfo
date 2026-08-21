@@ -1,6 +1,6 @@
 # UniInfo 🎓
 
-A RAG-powered assistant for exploring Masters program admission requirements — ask questions in plain English and get answers grounded in and cited to the university's own admissions pages.
+A RAG-powered assistant for exploring postgraduate program admission requirements — ask questions in plain English and get answers grounded in and cited to the university's own admissions pages.
 
 ## Why this exists
 
@@ -106,11 +106,17 @@ streamlit run app.py
 
 ## Currently covered
 
-- **Trinity College Dublin** — MSc Computer Science (Intelligent Systems), MSc Computer Science (Data Science)
-- **University College Dublin** — MSc Advanced Artificial Intelligence
-- **Dublin City University** — MSc in Computing
+**Trinity College Dublin**
+MSc Computer Science (Intelligent Systems) · MSc Computer Science (Data Science) · MSc in Economics · MSc in Finance · MSc in Financial Risk Management · MSc in International Management · MSc in Marketing · Master in Business Administration · LL.M. Laws
 
-Scoped to Masters programs in Data/AI/Computing for now. Adding a new program is a two-command process (`extraction.py` then `embedding.py`), so the list is expected to grow.
+**University College Dublin**
+MSc Advanced Artificial Intelligence · MSc in Computer Science · MSc in Computational Physics · MSc in Business Analytics · MSc in Accounting & Financial Management · MSc in Finance · MSc in Digital Marketing · PhD in Economics
+
+**Dublin City University**
+MSc in Computing · MSc in Business Analytics and Artificial Intelligence · MSc in Accounting · MSc in Finance · MSc in Digital Marketing
+
+22 programs across 3 Irish universities, spanning Computing, Business, Finance, and Law. Adding a new program is a two-command process (`extraction.py` then `embedding.py`), so both the university and program list are expected to grow.
+
 
 ## Roadmap
 
