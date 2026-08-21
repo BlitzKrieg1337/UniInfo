@@ -4,7 +4,7 @@ A RAG-powered assistant for exploring postgraduate program admission requirement
 
 ## Why this exists
 
-Admission requirements for Masters programs are rarely laid out cleanly in one place — they're scattered across long admissions pages mixed in with unrelated content (fees, modules, campus info), and non-obvious hard requirements (like specific credit-hour or degree-equivalency rules) are easy to miss when reading through a page rather than being able to ask about it directly. UniInfo exists to make that information easy to find and easy to ask about — grounded in and cited to the university's own pages, instead of relying on a manual read-through.
+Admission requirements for Postgraduate programs are rarely laid out cleanly in one place — they're scattered across long admissions pages mixed in with unrelated content (fees, modules, campus info), and non-obvious hard requirements (like specific credit-hour or degree-equivalency rules) are easy to miss when reading through a page rather than being able to ask about it directly. UniInfo exists to make that information easy to find and easy to ask about — grounded in and cited to the university's own pages, instead of relying on a manual read-through.
 
 ## What it does
 
