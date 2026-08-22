@@ -131,8 +131,8 @@ if user_query:
     with st.chat_message("assistant"):
         st.write(answer)
 
-        if documents:
-            st.write("**Source:**")
-            st.write(
-                documents[0].metadata.get("source", "Unknown")
-            )
+    if documents:
+        st.write("**Source:**")
+        college = documents[0].metadata.get("college", "Unknown")
+        program = documents[0].metadata.get("program", "Unknown")
+        st.write(f"{college} — {program}")
