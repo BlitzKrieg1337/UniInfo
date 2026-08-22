@@ -105,7 +105,7 @@ st.write(f"**University:** {selected_university} \t**Program:** {selected_progra
 def load_query(college, program):
     return Query(college, program)
 
-with st.spinner(f"Loading {selected_program}..."):
+with st.spinner(f"Just a second..."):
     query_engine = load_query(
         selected_university,
         selected_program
