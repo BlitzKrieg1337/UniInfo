@@ -57,6 +57,7 @@ class Query:
         self.chunks = self._load_chunks_from_chroma()
 
         # BM25 retriever
+        print("CHUNKS LOADED:", len(self.chunks))
         self.bm25_retriever = BM25Retriever.from_documents(self.chunks)
         self.bm25_retriever.k = 10
 
