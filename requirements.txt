@@ -11,3 +11,4 @@ python-dotenv
 streamlit
 rank_bm25
 langsmith
+sentence-transformers
