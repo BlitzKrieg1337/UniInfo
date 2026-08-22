@@ -2,6 +2,8 @@
 
 A RAG-powered assistant for exploring postgraduate program admission requirements — ask questions in plain English and get answers grounded in and cited to the university's own admissions pages.
 
+**Live demo:** [uniinfo.streamlit.app](https://uniinfo.streamlit.app/)
+
 ## Why this exists
 
 Admission requirements for Postgraduate programs are rarely laid out cleanly in one place — they're scattered across long admissions pages mixed in with unrelated content (fees, modules, campus info), and non-obvious hard requirements (like specific credit-hour or degree-equivalency rules) are easy to miss when reading through a page rather than being able to ask about it directly. UniInfo exists to make that information easy to find and easy to ask about — grounded in information extracted directly from the university's own pages, rather than relying on a manual read-through
@@ -12,6 +14,9 @@ Admission requirements for Postgraduate programs are rarely laid out cleanly in 
 - Ask questions in natural language — requirements, deadlines, course structure, fees, whatever the source documents cover
 - Get an answer grounded strictly in the retrieved source material, with a citation back to the originating document
 - State your own profile in a question (e.g. *"I have a 6.5 IELTS score, does that meet the requirement?"*) and get an honest comparison — the assistant checks it against whatever is explicitly stated, and says so plainly when a requirement isn't a hard number or isn't specified at all, rather than guessing
+
+Each question is answered independently — the system is single-turn, with no conversation memory across questions. This keeps every answer grounded strictly in retrieval for that one question, rather than mixing in earlier turns as implicit context; a follow-up like "what about the deadline?" needs to restate what it's referring to rather than relying on the assistant to recall a previous question.
+
 
 ## What it deliberately does not do
 
