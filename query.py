@@ -70,17 +70,22 @@ class Query:
 
     def _load_chunks_from_chroma(self):
         data = self.db.get(
-            where={"$and": [
-                {"college": self.college_name},
-                {"program": self.program_name}
-            ]},
             include=["documents", "metadatas"]
         )
-        return [
-            Document(page_content=content, metadata=meta)
-            for content, meta in zip(data["documents"], data["metadatas"])
-        ]
 
+        print("TOTAL CHUNKS IN CHROMA:", len(data["documents"]))
+        print("FIRST METADATA:", data["metadatas"][0] if data["metadatas"] else None)
+
+        return [
+            Document(
+                page_content=content,
+                metadata=meta
+            )
+            for content, meta in zip(
+                data["documents"],
+                data["metadatas"]
+            )
+        ]
     # ---------- VECTOR SEARCH ----------
 
     def similarity_search(self, user_query):
