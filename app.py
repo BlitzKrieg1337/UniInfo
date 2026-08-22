@@ -95,8 +95,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.write(f"**University:** {selected_university} \t**Program:** {selected_program}")
-
 # =========================
 # QUERY ENGINE
 # =========================
